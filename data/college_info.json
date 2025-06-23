@@ -1,0 +1,18 @@
+{
+  "min_credit_hours_per_semester": 12,
+  "max_credit_hours_per_semester": 18,
+  "max_credit_hours_with_permission": 21,
+  "min_gpa_for_overload": 3.0,
+  "min_gpa_to_avoid_warning": 2.0,
+  "max_failed_courses_allowed": 5,
+  "graduation_gpa_requirement": 2.0,
+  "total_required_hours_for_graduation": 160,
+  "summer_term_max_hours": 9,
+  "academic_levels": {
+    "1": "Freshman",
+    "2": "Sophomore",
+    "3": "Junior",
+    "4": "Senior",
+    "5": "Graduation Year"
+  }
+}

@@ -1,0 +1,196 @@
+[
+  {
+    "code": "RQU101",
+    "name": "English Language (1)",
+    "hours": 3,
+    "year": 1,
+    "semester": 1,
+    "type": "University Mandatory Requirements",
+    "prerequisites": []
+  },
+  {
+    "code": "RQU102",
+    "name": "Arabic Language (1)",
+    "hours": 2,
+    "year": 1,
+    "semester": 1,
+    "type": "University Mandatory Requirements",
+    "prerequisites": []
+  },
+  {
+    "code": "RQF 105- IT",
+    "name": "Engineering Mechanics",
+    "hours": 3,
+    "year": 1,
+    "semester": 1,
+    "type": "College Mandatory Requirements",
+    "prerequisites": []
+  },
+  {
+    "code": "RQF104-IT",
+    "name": "Mathematics (1)",
+    "hours": 3,
+    "year": 1,
+    "semester": 1,
+    "type": "College Mandatory Requirements",
+    "prerequisites": []
+  },
+  {
+    "code": "RQF 106- IT",
+    "name": "Introduction to Programming",
+    "hours": 4,
+    "year": 1,
+    "semester": 1,
+    "type": "College Mandatory Requirements",
+    "prerequisites": []
+  },
+  {
+    "code": "Lvl 1",
+    "name": "Level 1 - Starter A",
+    "hours": 2,
+    "year": 1,
+    "semester": 1,
+    "type": "University Elective Requirements",
+    "prerequisites": []
+  },
+  {
+    "code": "Lvl 2",
+    "name": "Level 2 - Starter B",
+    "hours": 2,
+    "year": 1,
+    "semester": 1,
+    "type": "University Elective Requirements",
+    "prerequisites": [
+      "Lvl 1"
+    ]
+  },
+  {
+    "code": "Lvl 3",
+    "name": "Level 3 - Elementary A",
+    "hours": 0,
+    "year": 1,
+    "semester": 1,
+    "type": "University Elective Requirements",
+    "prerequisites": [
+      "Lvl 2"
+    ]
+  },
+  {
+    "code": "Lvl 4",
+    "name": "Level 4 - Elementary B",
+    "hours": 2,
+    "year": 1,
+    "semester": 1,
+    "type": "University Elective Requirements",
+    "prerequisites": [
+      "Lvl 3"
+    ]
+  },
+  {
+    "code": "RQU 103",
+    "name": "Computer Skills",
+    "hours": 3,
+    "year": 1,
+    "semester": 1,
+    "type": "University Mandatory Requirements",
+    "prerequisites": []
+  },
+  {
+    "code": "RQF 210- IT",
+    "name": "Fundamentals of Electrical Engineering",
+    "hours": 5,
+    "year": 1,
+    "semester": 2,
+    "type": "College Mandatory Requirements",
+    "prerequisites": []
+  },
+  {
+    "code": "RQF 209- IT",
+    "name": "Quality and Reliability",
+    "hours": 2,
+    "year": 1,
+    "semester": 2,
+    "type": "College Mandatory Requirements",
+    "prerequisites": [
+      "RQF 106- IT"
+    ]
+  },
+  {
+    "code": "RQF 208- IT",
+    "name": "Mathematics 2",
+    "hours": 3,
+    "year": 1,
+    "semester": 2,
+    "type": "College Mandatory Requirements",
+    "prerequisites": [
+      "RQF104-IT"
+    ]
+  },
+  {
+    "code": "RQF 212- IT",
+    "name": "Chemistry",
+    "hours": 3,
+    "year": 1,
+    "semester": 2,
+    "type": "College Mandatory Requirements",
+    "prerequisites": []
+  },
+  {
+    "code": "RQU 207",
+    "name": "English Language (2)",
+    "hours": 3,
+    "year": 1,
+    "semester": 2,
+    "type": "University Mandatory Requirements",
+    "prerequisites": [
+      "RQU101"
+    ]
+  },
+  {
+    "code": "RQU 211",
+    "name": "General Culture (National, Regional)",
+    "hours": 2,
+    "year": 1,
+    "semester": 2,
+    "type": "University Mandatory Requirements",
+    "prerequisites": []
+  },
+  {
+    "code": "RQF 315- IT",
+    "name": "Engineering Drawing",
+    "hours": 3,
+    "year": 2,
+    "semester": 1,
+    "type": "College Mandatory Requirements",
+    "prerequisites": []
+  },
+  {
+    "code": "RQF 313- IT",
+    "name": "Mathematics (3)",
+    "hours": 3,
+    "year": 2,
+    "semester": 1,
+    "type": "College Mandatory Requirements",
+    "prerequisites": [
+      "RQF 208- IT"
+    ]
+  },
+  {
+    "code": "RQITC316",
+    "name": "Discrete Mathematics",
+    "hours": 3,
+    "year": 2,
+    "semester": 1,
+    "type": "Certificate Mandatory Requirements",
+    "prerequisites": []
+  },
+  {
+    "code": "RQUE1",
+    "name": "Management Science",
+    "hours": 2,
+    "year": 2,
+    "semester": 1,
+    "type": "University Elective Requirements",
+    "prerequisites": []
+  }
+]
