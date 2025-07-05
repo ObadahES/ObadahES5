@@ -1,12 +1,17 @@
-from experta import KnowledgeEngine, Rule, MATCH, TEST
+from experta import KnowledgeEngine, Rule, Fact, MATCH, TEST
 from engine.facts import StudentFacts
 import os
 import json
+#-----------------------------------------------------
+class CourseRecommended(Fact):
+    pass
 
+#-----------------------------------------------------
 class RecommendationRules(KnowledgeEngine):
     def __init__(self):
         super().__init__()
         self.recommendations = []
+        self.total_hours = 0
 
         current_dir = os.path.dirname(os.path.abspath(__file__))
         courses_path = os.path.join(current_dir, '..', 'Data', 'courses.json')
@@ -14,63 +19,171 @@ class RecommendationRules(KnowledgeEngine):
         with open(courses_path, 'r', encoding='utf-8') as f:
             self.all_courses = json.load(f)
 
+#-----------------------------------------------------
+    def add_recommendation(self, course, confidence):
+        code = course["code"]
+        name = course["name"]
+        hours = course.get("hours", 3)
+        if self.total_hours + hours <= self.max_hours:
+            self.recommendations.append(f"{code} - {name} ({hours}h) - Confidence: {confidence:.2f}")
+            self.total_hours += hours
+#-----------------------------------------------------
+
+    def calc_confidence(self, course, passed, failed, gpa):
+        conf = 0.5
+        if course["code"] not in failed:
+            conf += 0.3
+        prereqs = course.get("prerequisites", [])
+        if all(pr in passed for pr in prereqs):
+            conf += 0.1
+        if gpa >= 3.5:
+            conf += 0.1
+        return min(conf, 1.0)
+#-----------------------------------------------------
+
     @Rule(StudentFacts(current_level=MATCH.level, passed_courses=MATCH.passed,
-                       failed_courses=MATCH.failed, max_hours=MATCH.max_hours))
-    def recommend_courses(self, level, passed, failed, max_hours):
-        recommended = []
-        total_hours = 0
+                       failed_courses=MATCH.failed, max_hours=MATCH.max_hours,
+                       gpa=MATCH.gpa))
+    def init_student(self, level, passed, failed, max_hours, gpa):
+        self.passed = passed
+        self.failed = failed
+        self.gpa = gpa
+        self.max_hours = max_hours
 
         for code in failed:
             course = next((c for c in self.all_courses if c["code"] == code), None)
             if course:
-                hours = course.get("hours", 3)
-                if total_hours + hours <= max_hours:
-                    recommended.append(f"{course['code']} - {course['name']} ({hours}h)")
-                    total_hours += hours
+                self.add_recommendation(course, 0.6)
 
         for course in self.all_courses:
-            code = course["code"]
-            prereqs = course.get("prerequisites", [])
-            hours = course.get("hours", 3)
+            self.declare(Fact(course=course))
 
-            if code not in passed and code not in failed:
-                if all(pr in passed for pr in prereqs):
-                    if total_hours + hours <= max_hours:
-                        recommended.append(f"{code} - {course['name']} ({hours}h)")
-                        total_hours += hours
 
-        self.recommendations.extend(recommended)
+    @Rule(Fact(course=MATCH.course), TEST(lambda course: course["code"] == "RQU101"))
+    def rule_RQU101(self, course):
+        conf = self.calc_confidence(course, self.passed, self.failed, self.gpa)
+        if conf >= 0.3:
+            self.add_recommendation(course, conf)
 
-    @Rule(StudentFacts(current_level=MATCH.level, gpa=MATCH.gpa),
-          TEST(lambda level, gpa: level >= 2 and gpa >= 3.5))
-    def recommend_honor_student_courses(self):
-        print("You are an honor student! It is recommended to enroll in advanced courses according to your plan.")
+    @Rule(Fact(course=MATCH.course), TEST(lambda course: course["code"] == "RQU102"))
+    def rule_RQU102(self, course):
+        conf = self.calc_confidence(course, self.passed, self.failed, self.gpa)
+        if conf >= 0.3:
+            self.add_recommendation(course, conf)
 
-    @Rule(StudentFacts(goal='graduate_early', max_hours=MATCH.hours),
-          TEST(lambda hours: hours >= 18))
-    def recommend_heavy_load(self):
-        print("You want to graduate early, we recommend taking the maximum allowed hours according to your plan.")
+    @Rule(Fact(course=MATCH.course), TEST(lambda course: course["code"] == "RQF 105- IT"))
+    def rule_RQF105IT(self, course):
+        conf = self.calc_confidence(course, self.passed, self.failed, self.gpa)
+        if conf >= 0.3:
+            self.add_recommendation(course, conf)
 
-    @Rule(StudentFacts(gpa=MATCH.gpa),
-          TEST(lambda gpa: gpa < 2.0))
-    def recommend_focus_on_easy_courses(self):
-        print("Low GPA detected, we recommend easy courses to raise your GPA such as: [CS110, HUM101]")
+    @Rule(Fact(course=MATCH.course), TEST(lambda course: course["code"] == "RQF104-IT"))
+    def rule_RQF104IT(self, course):
+        conf = self.calc_confidence(course, self.passed, self.failed, self.gpa)
+        if conf >= 0.3:
+            self.add_recommendation(course, conf)
 
-    @Rule(StudentFacts(passed_courses=MATCH.courses),
-          TEST(lambda courses: "CS101" in courses and "CS102" not in courses))
-    def recommend_cs102(self):
-        print("You passed CS101, it is recommended to take CS102 next semester.")
+    @Rule(Fact(course=MATCH.course), TEST(lambda course: course["code"] == "RQF 106- IT"))
+    def rule_RQF106IT(self, course):
+        conf = self.calc_confidence(course, self.passed, self.failed, self.gpa)
+        if conf >= 0.3:
+            self.add_recommendation(course, conf)
 
-    @Rule(StudentFacts(goal='raise_gpa'))
-    def recommend_gpa_friendly_courses(self):
-        print("Your goal is to raise your GPA, choose easy courses with high success rates.")
+    @Rule(Fact(course=MATCH.course), TEST(lambda course: course["code"] == "Lvl 1"))
+    def rule_Lvl1(self, course):
+        conf = self.calc_confidence(course, self.passed, self.failed, self.gpa)
+        if conf >= 0.3:
+            self.add_recommendation(course, conf)
 
-    @Rule(StudentFacts(max_hours=MATCH.hours),
-          TEST(lambda hours: hours < 15))
-    def recommend_fewer_courses(self):
-        print("Your max allowed hours are low, choose only essential courses carefully.")
+    @Rule(Fact(course=MATCH.course), TEST(lambda course: course["code"] == "Lvl 2"))
+    def rule_Lvl2(self, course):
+        if all(pr in self.passed for pr in course["prerequisites"]):
+            conf = self.calc_confidence(course, self.passed, self.failed, self.gpa)
+            if conf >= 0.3:
+                self.add_recommendation(course, conf)
 
-    @Rule(StudentFacts(current_level=MATCH.level),
-          TEST(lambda level: level >= 4))
-    def recommend_graduation_preparation(self):
-        print("You are close to graduation, make sure to complete mandatory courses and remaining requirements.")
+    @Rule(Fact(course=MATCH.course), TEST(lambda course: course["code"] == "Lvl 3"))
+    def rule_Lvl3(self, course):
+        if all(pr in self.passed for pr in course["prerequisites"]):
+            conf = self.calc_confidence(course, self.passed, self.failed, self.gpa)
+            if conf >= 0.3:
+                self.add_recommendation(course, conf)
+
+    @Rule(Fact(course=MATCH.course), TEST(lambda course: course["code"] == "Lvl 4"))
+    def rule_Lvl4(self, course):
+        if all(pr in self.passed for pr in course["prerequisites"]):
+            conf = self.calc_confidence(course, self.passed, self.failed, self.gpa)
+            if conf >= 0.3:
+                self.add_recommendation(course, conf)
+
+    @Rule(Fact(course=MATCH.course), TEST(lambda course: course["code"] == "RQU 103"))
+    def rule_RQU103(self, course):
+        conf = self.calc_confidence(course, self.passed, self.failed, self.gpa)
+        if conf >= 0.3:
+            self.add_recommendation(course, conf)
+
+    @Rule(Fact(course=MATCH.course), TEST(lambda course: course["code"] == "RQF 210- IT"))
+    def rule_RQF210IT(self, course):
+        conf = self.calc_confidence(course, self.passed, self.failed, self.gpa)
+        if conf >= 0.3:
+            self.add_recommendation(course, conf)
+
+    @Rule(Fact(course=MATCH.course), TEST(lambda course: course["code"] == "RQF 209- IT"))
+    def rule_RQF209IT(self, course):
+        if all(pr in self.passed for pr in course["prerequisites"]):
+            conf = self.calc_confidence(course, self.passed, self.failed, self.gpa)
+            if conf >= 0.3:
+                self.add_recommendation(course, conf)
+
+    @Rule(Fact(course=MATCH.course), TEST(lambda course: course["code"] == "RQF 208- IT"))
+    def rule_RQF208IT(self, course):
+        if all(pr in self.passed for pr in course["prerequisites"]):
+            conf = self.calc_confidence(course, self.passed, self.failed, self.gpa)
+            if conf >= 0.3:
+                self.add_recommendation(course, conf)
+
+    @Rule(Fact(course=MATCH.course), TEST(lambda course: course["code"] == "RQF 212- IT"))
+    def rule_RQF212IT(self, course):
+        conf = self.calc_confidence(course, self.passed, self.failed, self.gpa)
+        if conf >= 0.3:
+            self.add_recommendation(course, conf)
+
+    @Rule(Fact(course=MATCH.course), TEST(lambda course: course["code"] == "RQU 207"))
+    def rule_RQU207(self, course):
+        if all(pr in self.passed for pr in course["prerequisites"]):
+            conf = self.calc_confidence(course, self.passed, self.failed, self.gpa)
+            if conf >= 0.3:
+                self.add_recommendation(course, conf)
+
+    @Rule(Fact(course=MATCH.course), TEST(lambda course: course["code"] == "RQU 211"))
+    def rule_RQU211(self, course):
+        conf = self.calc_confidence(course, self.passed, self.failed, self.gpa)
+        if conf >= 0.3:
+            self.add_recommendation(course, conf)
+
+    @Rule(Fact(course=MATCH.course), TEST(lambda course: course["code"] == "RQF 315- IT"))
+    def rule_RQF315IT(self, course):
+        conf = self.calc_confidence(course, self.passed, self.failed, self.gpa)
+        if conf >= 0.3:
+            self.add_recommendation(course, conf)
+
+    @Rule(Fact(course=MATCH.course), TEST(lambda course: course["code"] == "RQF 313- IT"))
+    def rule_RQF313IT(self, course):
+        if all(pr in self.passed for pr in course["prerequisites"]):
+            conf = self.calc_confidence(course, self.passed, self.failed, self.gpa)
+            if conf >= 0.3:
+                self.add_recommendation(course, conf)
+
+    @Rule(Fact(course=MATCH.course), TEST(lambda course: course["code"] == "RQITC316"))
+    def rule_RQITC316(self, course):
+        conf = self.calc_confidence(course, self.passed, self.failed, self.gpa)
+        if conf >= 0.3:
+            self.add_recommendation(course, conf)
+
+    @Rule(Fact(course=MATCH.course), TEST(lambda course: course["code"] == "RQUE1"))
+    def rule_RQUE1(self, course):
+        conf = self.calc_confidence(course, self.passed, self.failed, self.gpa)
+        if conf >= 0.3:
+            self.add_recommendation(course, conf)
+
+#-----------------------------------------------------

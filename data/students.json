@@ -19,7 +19,7 @@
     ],
     "remaining_hours": 58,
     "current_semester": "Spring",
-    "max_hours": 21,
+    "max_hours": 18,
     "registered_hours": 15,
     "interests": [
       "AI",
@@ -90,7 +90,7 @@
     ],
     "remaining_hours": 30,
     "current_semester": "Fall",
-    "max_hours": 22,
+    "max_hours": 18,
     "registered_hours": 16,
     "interests": [
       "Cybersecurity"

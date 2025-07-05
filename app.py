@@ -5,15 +5,15 @@ from engine.advisor_engine import AdvisorEngine
 
 app = Flask(__name__)
 
-
 with open('data/students.json', 'r', encoding='utf-8') as f:
     STUDENTS = {s['id']: s for s in json.load(f)}
 
-
-with open('data/college_info.json', 'r', encoding='utf-8') as f:
+with open('data/collage_info.json', 'r', encoding='utf-8') as f:
     COLLEGE_INFO = json.load(f)
 
-HOME_HTML = '''
+RECS_FILE = 'data/all_students_recommendations.json'
+
+HOME_HTML = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,9 +50,9 @@ HOME_HTML = '''
 </div>
 </body>
 </html>
-'''
+"""
 
-RECS_HTML = '''
+RECS_HTML = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,7 +89,7 @@ RECS_HTML = '''
 </div>
 </body>
 </html>
-'''
+"""
 
 @app.route('/', methods=['GET'])
 def home():
@@ -112,15 +112,10 @@ def recommend():
 
     student['max_hours'] = max_allowed
 
-    # حفظ التعديل في ملف students.json
-    # 1. تحويل dict إلى قائمة من الطلاب مع التعديل الجديد
     updated_students_list = list(STUDENTS.values())
-
-    # 2. كتابة القائمة المحدثة إلى ملف JSON
     with open('data/students.json', 'w', encoding='utf-8') as f:
         json.dump(updated_students_list, f, ensure_ascii=False, indent=2)
 
-    # باقي الكود كما هو
     advisor = AdvisorEngine(student)
     advisor.reset()
     advisor.declare(StudentFacts(**student))
@@ -129,8 +124,19 @@ def recommend():
     actual_hours = advisor.total_hours if hasattr(advisor, 'total_hours') else sum(
         int(rec.split('(')[-1].split('h')[0]) for rec in advisor.recommendations if '(' in rec and 'h' in rec)
 
-    # باقي حفظ التوصيات كما في كودك الحالي...
-    # ...
+    # حفظ التوصيات الخاصة بالطالب إلى all_students_recommendations.json
+    recommendations_data = {}
+    if os.path.exists(RECS_FILE):
+        with open(RECS_FILE, 'r', encoding='utf-8') as f:
+            try:
+                recommendations_data = json.load(f)
+            except json.JSONDecodeError:
+                recommendations_data = {}
+
+    recommendations_data[student_id] = advisor.recommendations
+
+    with open(RECS_FILE, 'w', encoding='utf-8') as f:
+        json.dump(recommendations_data, f, ensure_ascii=False, indent=2)
 
     return render_template_string(RECS_HTML,
                                   student_name=student['name'],
@@ -138,11 +144,9 @@ def recommend():
                                   requested_hours=requested_hours,
                                   actual_hours=actual_hours)
 
-
 if __name__ == '__main__':
     import webbrowser
     import threading
-    import os
 
     def open_browser():
         webbrowser.open_new("http://127.0.0.1:5000/")
