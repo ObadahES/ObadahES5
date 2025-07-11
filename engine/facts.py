@@ -10,6 +10,6 @@ class StudentFacts(Fact):
     max_hours = Field(int, mandatory=True)
     registered_hours = Field(int, default=0)
     interests = Field(list, default=[])
-    academic_status = Field(str, default=None) 
-    goal = Field(str, default=None) 
+    academic_status = Field(str, default=None)
+    goal = Field(str, default=None)
     uncertainty = Field(float, default=1.0)

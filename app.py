@@ -124,7 +124,6 @@ def recommend():
     actual_hours = advisor.total_hours if hasattr(advisor, 'total_hours') else sum(
         int(rec.split('(')[-1].split('h')[0]) for rec in advisor.recommendations if '(' in rec and 'h' in rec)
 
-    # حفظ التوصيات الخاصة بالطالب إلى all_students_recommendations.json
     recommendations_data = {}
     if os.path.exists(RECS_FILE):
         with open(RECS_FILE, 'r', encoding='utf-8') as f:

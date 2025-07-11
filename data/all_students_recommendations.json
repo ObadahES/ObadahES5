@@ -2,11 +2,11 @@
   "S1000": [
     "Lvl 2 - Level 2 - Starter B (2h) - Confidence: 0.60",
     "RQU101 - English Language (1) (3h) - Confidence: 0.60",
-    "RQUE1 - Management Science (2h) - Confidence: 1.00",
-    "RQITC316 - Discrete Mathematics (3h) - Confidence: 1.00",
-    "RQF 315- IT - Engineering Drawing (3h) - Confidence: 1.00",
-    "RQU 211 - General Culture (National, Regional) (2h) - Confidence: 1.00",
-    "RQF 212- IT - Chemistry (3h) - Confidence: 1.00"
+    "RQUE1 - Management Science (2h) - Confidence: 0.60",
+    "RQITC316 - Discrete Mathematics (3h) - Confidence: 0.60",
+    "RQF 313- IT - Mathematics (3) (3h) - Confidence: 0.60",
+    "RQF 315- IT - Engineering Drawing (3h) - Confidence: 0.60",
+    "RQU 211 - General Culture (National, Regional) (2h) - Confidence: 0.60"
   ],
   "S1001": [
     "RQF 105- IT - Engineering Mechanics (3h) - Confidence: 0.60",

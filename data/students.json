@@ -5,17 +5,44 @@
     "current_level": 2,
     "gpa": 3.79,
     "passed_courses": [
-      "RQF 313- IT",
-      "RQF 212- IT",
-      "RQF 315- IT",
-      "RQU 211",
-      "RQF104-IT",
-      "RQU102",
-      "RQF 210- IT"
+      {
+        "code": "RQF 313- IT",
+        "grade": 88
+      },
+      {
+        "code": "RQF 212- IT",
+        "grade": 82
+      },
+      {
+        "code": "RQF 315- IT",
+        "grade": 91
+      },
+      {
+        "code": "RQU 211",
+        "grade": 89
+      },
+      {
+        "code": "RQF104-IT",
+        "grade": 84
+      },
+      {
+        "code": "RQU102",
+        "grade": 92
+      },
+      {
+        "code": "RQF 210- IT",
+        "grade": 86
+      }
     ],
     "failed_courses": [
-      "Lvl 2",
-      "RQU101"
+      {
+        "code": "Lvl 2",
+        "grade": 49
+      },
+      {
+        "code": "RQU101",
+        "grade": 56
+      }
     ],
     "remaining_hours": 58,
     "current_semester": "Spring",
@@ -31,114 +58,197 @@
   {
     "id": "S1001",
     "name": "Student 2",
-    "current_level": 1,
-    "gpa": 2.5,
+    "current_level": 3,
+    "gpa": 2.95,
     "passed_courses": [
-      "RQU102",
-      "RQF104-IT"
+      {
+        "code": "RQF104-IT",
+        "grade": 75
+      },
+      {
+        "code": "RQF 210- IT",
+        "grade": 78
+      },
+      {
+        "code": "RQF 212- IT",
+        "grade": 73
+      },
+      {
+        "code": "RQU101",
+        "grade": 65
+      },
+      {
+        "code": "RQU102",
+        "grade": 70
+      }
     ],
     "failed_courses": [
-      "RQF 105- IT"
+      {
+        "code": "RQF 313- IT",
+        "grade": 55
+      }
     ],
-    "remaining_hours": 75,
-    "current_semester": "Fall",
+    "remaining_hours": 42,
+    "current_semester": "Spring",
     "max_hours": 18,
     "registered_hours": 12,
     "interests": [
-      "Networking"
+      "Networks",
+      "Cybersecurity"
     ],
-    "academic_status": "probation",
+    "academic_status": "warning",
     "goal": "raise_gpa"
   },
   {
     "id": "S1002",
     "name": "Student 3",
-    "current_level": 3,
-    "gpa": 3.2,
+    "current_level": 1,
+    "gpa": 3.4,
     "passed_courses": [
-      "RQF 105- IT",
-      "RQF104-IT",
-      "RQF 210- IT",
-      "RQU 103"
+      {
+        "code": "RQU101",
+        "grade": 85
+      },
+      {
+        "code": "RQF104-IT",
+        "grade": 87
+      }
     ],
     "failed_courses": [],
-    "remaining_hours": 45,
-    "current_semester": "Spring",
-    "max_hours": 20,
+    "remaining_hours": 80,
+    "current_semester": "Fall",
+    "max_hours": 18,
     "registered_hours": 14,
     "interests": [
-      "AI",
-      "Data Science"
+      "Data Science",
+      "AI"
     ],
     "academic_status": "good_standing",
-    "goal": "graduate_early"
+    "goal": "explore_fields"
   },
   {
     "id": "S1003",
     "name": "Student 4",
     "current_level": 4,
-    "gpa": 3.9,
+    "gpa": 3.95,
     "passed_courses": [
-      "RQF 313- IT",
-      "RQITC316",
-      "RQF 315- IT",
-      "RQUE1",
-      "RQF 208- IT"
+      {
+        "code": "RQF 313- IT",
+        "grade": 95
+      },
+      {
+        "code": "RQF 315- IT",
+        "grade": 98
+      },
+      {
+        "code": "RQF 210- IT",
+        "grade": 92
+      },
+      {
+        "code": "RQU101",
+        "grade": 90
+      },
+      {
+        "code": "RQU102",
+        "grade": 89
+      },
+      {
+        "code": "RQF 212- IT",
+        "grade": 91
+      },
+      {
+        "code": "RQF104-IT",
+        "grade": 94
+      },
+      {
+        "code": "RQU 211",
+        "grade": 93
+      }
     ],
-    "failed_courses": [
-      "RQF 209- IT"
-    ],
-    "remaining_hours": 30,
-    "current_semester": "Fall",
+    "failed_courses": [],
+    "remaining_hours": 12,
+    "current_semester": "Spring",
     "max_hours": 18,
     "registered_hours": 16,
     "interests": [
-      "Cybersecurity"
+      "Machine Learning",
+      "AI",
+      "Cloud"
     ],
     "academic_status": "honor",
-    "goal": "graduate_early"
+    "goal": "research"
   },
   {
     "id": "S1004",
     "name": "Student 5",
-    "current_level": 1,
-    "gpa": 1.8,
+    "current_level": 2,
+    "gpa": 2.1,
     "passed_courses": [
-      "RQU 103"
+      {
+        "code": "RQU101",
+        "grade": 62
+      },
+      {
+        "code": "RQF104-IT",
+        "grade": 68
+      }
     ],
     "failed_courses": [
-      "RQF104-IT",
-      "RQF 105- IT"
+      {
+        "code": "RQF 210- IT",
+        "grade": 50
+      },
+      {
+        "code": "RQU102",
+        "grade": 45
+      }
     ],
-    "remaining_hours": 80,
-    "current_semester": "Spring",
-    "max_hours": 15,
-    "registered_hours": 10,
+    "remaining_hours": 70,
+    "current_semester": "Fall",
+    "max_hours": 12,
+    "registered_hours": 12,
     "interests": [
-      "Web"
+      "Web",
+      "Mobile Apps"
     ],
     "academic_status": "probation",
-    "goal": "raise_gpa"
+    "goal": "continue_study"
   },
   {
     "id": "S1005",
     "name": "Student 6",
-    "current_level": 2,
-    "gpa": 3.0,
+    "current_level": 3,
+    "gpa": 3.3,
     "passed_courses": [
-      "RQF104-IT",
-      "RQU102",
-      "RQF 210- IT"
+      {
+        "code": "RQF 313- IT",
+        "grade": 84
+      },
+      {
+        "code": "RQF 315- IT",
+        "grade": 81
+      },
+      {
+        "code": "RQF104-IT",
+        "grade": 80
+      },
+      {
+        "code": "RQF 212- IT",
+        "grade": 79
+      },
+      {
+        "code": "RQU 211",
+        "grade": 86
+      }
     ],
-    "failed_courses": [
-      "RQU101"
-    ],
-    "remaining_hours": 60,
-    "current_semester": "Fall",
+    "failed_courses": [],
+    "remaining_hours": 34,
+    "current_semester": "Spring",
     "max_hours": 18,
-    "registered_hours": 15,
+    "registered_hours": 16,
     "interests": [
-      "AI"
+      "Cybersecurity",
+      "IoT"
     ],
     "academic_status": "good_standing",
     "goal": "graduate_early"
@@ -146,237 +256,53 @@
   {
     "id": "S1006",
     "name": "Student 7",
-    "current_level": 3,
-    "gpa": 2.9,
+    "current_level": 1,
+    "gpa": 2.75,
     "passed_courses": [
-      "RQF 105- IT",
-      "RQF 208- IT",
-      "RQU 103",
-      "RQF 212- IT"
+      {
+        "code": "RQU101",
+        "grade": 69
+      }
     ],
     "failed_courses": [
-      "RQF 209- IT"
+      {
+        "code": "RQF104-IT",
+        "grade": 58
+      }
     ],
-    "remaining_hours": 50,
-    "current_semester": "Spring",
-    "max_hours": 20,
-    "registered_hours": 17,
+    "remaining_hours": 88,
+    "current_semester": "Fall",
+    "max_hours": 12,
+    "registered_hours": 10,
     "interests": [
-      "Networking"
+      "Gaming",
+      "VR"
     ],
-    "academic_status": "good_standing",
-    "goal": "graduate_early"
+    "academic_status": "warning",
+    "goal": "improve_gpa"
   },
   {
     "id": "S1007",
     "name": "Student 8",
-    "current_level": 4,
-    "gpa": 3.6,
-    "passed_courses": [
-      "RQF 313- IT",
-      "RQITC316",
-      "RQUE1",
-      "RQF 315- IT"
-    ],
-    "failed_courses": [],
-    "remaining_hours": 35,
-    "current_semester": "Fall",
-    "max_hours": 22,
-    "registered_hours": 18,
-    "interests": [
-      "Data Science"
-    ],
-    "academic_status": "honor",
-    "goal": "graduate_early"
-  },
-  {
-    "id": "S1008",
-    "name": "Student 9",
-    "current_level": 1,
-    "gpa": 2.2,
-    "passed_courses": [
-      "RQU102",
-      "RQF104-IT"
-    ],
-    "failed_courses": [
-      "RQU 103"
-    ],
-    "remaining_hours": 70,
-    "current_semester": "Spring",
-    "max_hours": 16,
-    "registered_hours": 12,
-    "interests": [
-      "Web"
-    ],
-    "academic_status": "good_standing",
-    "goal": "raise_gpa"
-  },
-  {
-    "id": "S1009",
-    "name": "Student 10",
     "current_level": 2,
-    "gpa": 3.5,
+    "gpa": 3.55,
     "passed_courses": [
-      "RQF104-IT",
-      "RQF 210- IT",
-      "RQU 103"
-    ],
-    "failed_courses": [
-      "RQF 105- IT"
-    ],
-    "remaining_hours": 55,
-    "current_semester": "Fall",
-    "max_hours": 19,
-    "registered_hours": 14,
-    "interests": [
-      "AI",
-      "Networking"
-    ],
-    "academic_status": "good_standing",
-    "goal": "graduate_early"
-  },
-  {
-    "id": "S1010",
-    "name": "Student 11",
-    "current_level": 3,
-    "gpa": 3.8,
-    "passed_courses": [
-      "RQF 315- IT",
-      "RQF 313- IT",
-      "RQUE1",
-      "RQITC316"
-    ],
-    "failed_courses": [],
-    "remaining_hours": 40,
-    "current_semester": "Spring",
-    "max_hours": 21,
-    "registered_hours": 17,
-    "interests": [
-      "Cybersecurity"
-    ],
-    "academic_status": "honor",
-    "goal": "graduate_early"
-  },
-  {
-    "id": "S1011",
-    "name": "Student 12",
-    "current_level": 1,
-    "gpa": 2.7,
-    "passed_courses": [
-      "RQU 103",
-      "RQF104-IT"
-    ],
-    "failed_courses": [
-      "RQF 105- IT"
-    ],
-    "remaining_hours": 72,
-    "current_semester": "Fall",
-    "max_hours": 17,
-    "registered_hours": 13,
-    "interests": [
-      "Web"
-    ],
-    "academic_status": "good_standing",
-    "goal": "raise_gpa"
-  },
-  {
-    "id": "S1012",
-    "name": "Student 13",
-    "current_level": 2,
-    "gpa": 3.1,
-    "passed_courses": [
-      "RQF 210- IT",
-      "RQF 212- IT",
-      "RQF104-IT"
-    ],
-    "failed_courses": [],
-    "remaining_hours": 58,
-    "current_semester": "Spring",
-    "max_hours": 20,
-    "registered_hours": 15,
-    "interests": [
-      "AI"
-    ],
-    "academic_status": "good_standing",
-    "goal": "graduate_early"
-  },
-  {
-    "id": "S1013",
-    "name": "Student 14",
-    "current_level": 3,
-    "gpa": 3.4,
-    "passed_courses": [
-      "RQF 105- IT",
-      "RQF 208- IT",
-      "RQU 103"
-    ],
-    "failed_courses": [
-      "RQF 209- IT"
-    ],
-    "remaining_hours": 45,
-    "current_semester": "Fall",
-    "max_hours": 22,
-    "registered_hours": 18,
-    "interests": [
-      "Networking",
-      "AI"
-    ],
-    "academic_status": "good_standing",
-    "goal": "graduate_early"
-  },
-  {
-    "id": "S1014",
-    "name": "Student 15",
-    "current_level": 4,
-    "gpa": 3.9,
-    "passed_courses": [
-      "RQF 313- IT",
-      "RQITC316",
-      "RQUE1"
-    ],
-    "failed_courses": [],
-    "remaining_hours": 32,
-    "current_semester": "Spring",
-    "max_hours": 22,
-    "registered_hours": 18,
-    "interests": [
-      "Cybersecurity",
-      "AI"
-    ],
-    "academic_status": "honor",
-    "goal": "graduate_early"
-  },
-  {
-    "id": "S1015",
-    "name": "Student 16",
-    "current_level": 1,
-    "gpa": 1.9,
-    "passed_courses": [
-      "RQU 103"
-    ],
-    "failed_courses": [
-      "RQF104-IT",
-      "RQF 105- IT"
-    ],
-    "remaining_hours": 80,
-    "current_semester": "Fall",
-    "max_hours": 15,
-    "registered_hours": 10,
-    "interests": [
-      "Web"
-    ],
-    "academic_status": "probation",
-    "goal": "raise_gpa"
-  },
-  {
-    "id": "S1016",
-    "name": "Student 17",
-    "current_level": 2,
-    "gpa": 3.0,
-    "passed_courses": [
-      "RQF104-IT",
-      "RQU102",
-      "RQF 210- IT"
+      {
+        "code": "RQF 210- IT",
+        "grade": 87
+      },
+      {
+        "code": "RQF104-IT",
+        "grade": 85
+      },
+      {
+        "code": "RQU102",
+        "grade": 88
+      },
+      {
+        "code": "RQU101",
+        "grade": 82
+      }
     ],
     "failed_courses": [],
     "remaining_hours": 60,
@@ -385,76 +311,89 @@
     "registered_hours": 15,
     "interests": [
       "AI",
-      "Web"
+      "UX/UI"
     ],
     "academic_status": "good_standing",
     "goal": "graduate_early"
   },
   {
-    "id": "S1017",
-    "name": "Student 18",
+    "id": "S1008",
+    "name": "Student 9",
     "current_level": 3,
-    "gpa": 3.2,
+    "gpa": 2.6,
     "passed_courses": [
-      "RQF 105- IT",
-      "RQF 208- IT",
-      "RQU 103"
+      {
+        "code": "RQU101",
+        "grade": 65
+      },
+      {
+        "code": "RQF104-IT",
+        "grade": 70
+      },
+      {
+        "code": "RQF 210- IT",
+        "grade": 68
+      }
     ],
     "failed_courses": [
-      "RQF 209- IT"
+      {
+        "code": "RQF 212- IT",
+        "grade": 55
+      }
     ],
     "remaining_hours": 50,
     "current_semester": "Fall",
-    "max_hours": 20,
-    "registered_hours": 17,
+    "max_hours": 15,
+    "registered_hours": 14,
     "interests": [
+      "Web",
+      "Mobile Apps"
+    ],
+    "academic_status": "warning",
+    "goal": "raise_gpa"
+  },
+  {
+    "id": "S1009",
+    "name": "Student 10",
+    "current_level": 4,
+    "gpa": 3.1,
+    "passed_courses": [
+      {
+        "code": "RQF 313- IT",
+        "grade": 84
+      },
+      {
+        "code": "RQF 212- IT",
+        "grade": 81
+      },
+      {
+        "code": "RQF104-IT",
+        "grade": 79
+      },
+      {
+        "code": "RQU 211",
+        "grade": 77
+      },
+      {
+        "code": "RQF 315- IT",
+        "grade": 85
+      }
+    ],
+    "failed_courses": [
+      {
+        "code": "RQU102",
+        "grade": 58
+      }
+    ],
+    "remaining_hours": 20,
+    "current_semester": "Spring",
+    "max_hours": 18,
+    "registered_hours": 16,
+    "interests": [
+      "DevOps",
       "Networking"
     ],
     "academic_status": "good_standing",
-    "goal": "graduate_early"
-  },
-  {
-    "id": "S1018",
-    "name": "Student 19",
-    "current_level": 4,
-    "gpa": 3.7,
-    "passed_courses": [
-      "RQF 313- IT",
-      "RQITC316",
-      "RQF 315- IT",
-      "RQUE1"
-    ],
-    "failed_courses": [],
-    "remaining_hours": 30,
-    "current_semester": "Spring",
-    "max_hours": 22,
-    "registered_hours": 18,
-    "interests": [
-      "Cybersecurity",
-      "AI"
-    ],
-    "academic_status": "honor",
-    "goal": "graduate_early"
-  },
-  {
-    "id": "S1019",
-    "name": "Student 20",
-    "current_level": 1,
-    "gpa": 2.1,
-    "passed_courses": [
-      "RQU102"
-    ],
-    "failed_courses": [
-      "RQF104-IT"
-    ],
-    "remaining_hours": 75,
-    "current_semester": "Fall",
-    "max_hours": 16,
-    "registered_hours": 13,
-    "interests": [
-      "Web"
-    ],
-    "academic_status": "good_standing",
-    "goal": "raise_gpa"
+    "goal": "graduate"
   }
 ]
