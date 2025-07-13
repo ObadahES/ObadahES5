@@ -395,5 +395,57 @@
     ],
     "academic_status": "good_standing",
     "goal": "graduate"
+  },
+  {
+    "id": "S2000",
+    "name": "Top Student",
+    "current_level": 3,
+    "gpa": 3.95,
+    "passed_courses": [
+      {
+        "code": "RQF104-IT",
+        "grade": 95
+      },
+      {
+        "code": "RQF 210- IT",
+        "grade": 93
+      },
+      {
+        "code": "RQF 212- IT",
+        "grade": 90
+      },
+      {
+        "code": "RQF 313- IT",
+        "grade": 97
+      },
+      {
+        "code": "RQF 315- IT",
+        "grade": 94
+      },
+      {
+        "code": "RQU101",
+        "grade": 92
+      },
+      {
+        "code": "RQU102",
+        "grade": 96
+      },
+      {
+        "code": "RQU 211",
+        "grade": 95
+      }
+    ],
+    "failed_courses": [],
+    "remaining_hours": 30,
+    "current_semester": "Fall",
+    "max_hours": 18,
+    "registered_hours": 14,
+    "interests": [
+      "AI",
+      "Machine Learning",
+      "Cloud"
+    ],
+    "academic_status": "honor",
+    "goal": "research"
   }
 ]

@@ -10,10 +10,11 @@ class AdvisorEngine(RecommendationRules):
 
     def run(self):
         super().run()
-        self.pending_recommendations.sort(key=lambda x: -x[0])
-        for confidence, recommendation, hours in self.pending_recommendations:
-            if self.total_hours + hours <= self.max_hours:
-                self.recommendations.append(recommendation)
-                self.total_hours += hours
+        # تم تعديل هذه الجزئية لتتناسب مع بنية البيانات الجديدة
+        self.pending_recommendations.sort(key=lambda x: -x['confidence'])
+        for rec in self.pending_recommendations:
+            if self.total_hours + rec['hours'] <= self.max_hours:
+                self.recommendations.append(rec['text'])
+                self.total_hours += rec['hours']
             else:
                 break
