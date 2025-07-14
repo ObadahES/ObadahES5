@@ -1,22 +1,22 @@
 {
   "S1000": {
     "courses": [
-      "Lvl 2 - Level 2 - Starter B (2h) - Confidence: 0.77",
-      "RQU101 - English Language (1) (3h) - Confidence: 0.76",
       "RQU102 - Arabic Language (1) (2h) - Confidence: 0.81",
       "RQU 211 - General Culture (National, Regional) (2h) - Confidence: 0.80",
       "RQU 103 - Computer Skills (3h) - Confidence: 0.79",
+      "Lvl 2 - Level 2 - Starter B (2h) - Confidence: 0.77",
       "RQF 106- IT - Introduction to Programming (4h) - Confidence: 0.77",
+      "RQF104-IT - Mathematics (1) (3h) - Confidence: 0.77",
       "Lvl 1 - Level 1 - Starter A (2h) - Confidence: 0.63"
     ],
     "load_analysis": {
       "easy": {
-        "count": 5,
-        "hours": 11
+        "count": 4,
+        "hours": 8
       },
       "medium": {
-        "count": 2,
-        "hours": 7
+        "count": 3,
+        "hours": 10
       },
       "hard": {
         "count": 0,
@@ -27,61 +27,11 @@
   },
   "S1001": {
     "courses": [
-      "RQF 313- IT - Mathematics (3) (3h) - Confidence: 0.73",
-      "RQF 105- IT - Engineering Mechanics (3h) - Confidence: 0.79",
-      "RQF 212- IT - Chemistry (3h) - Confidence: 0.79",
-      "RQF 315- IT - Engineering Drawing (3h) - Confidence: 0.79",
-      "RQF104-IT - Mathematics (1) (3h) - Confidence: 0.79",
-      "RQITC316 - Discrete Mathematics (3h) - Confidence: 0.79"
-    ],
-    "load_analysis": {
-      "easy": {
-        "count": 6,
-        "hours": 18
-      },
-      "medium": {
-        "count": 0,
-        "hours": 0
-      },
-      "hard": {
-        "count": 0,
-        "hours": 0
-      }
-    },
-    "total_hours": 18
-  },
-  "S1003": {
-    "courses": [
-      "RQF 208- IT - Mathematics 2 (3h) - Confidence: 0.78",
-      "RQU 207 - English Language (2) (3h) - Confidence: 0.78",
-      "RQF 105- IT - Engineering Mechanics (3h) - Confidence: 0.64",
-      "RQF 212- IT - Chemistry (3h) - Confidence: 0.64",
-      "RQF 315- IT - Engineering Drawing (3h) - Confidence: 0.64",
-      "RQF104-IT - Mathematics (1) (3h) - Confidence: 0.64"
-    ],
-    "load_analysis": {
-      "easy": {
-        "count": 6,
-        "hours": 18
-      },
-      "medium": {
-        "count": 0,
-        "hours": 0
-      },
-      "hard": {
-        "count": 0,
-        "hours": 0
-      }
-    },
-    "total_hours": 18
-  },
-  "S1002": {
-    "courses": [
       "RQU101 - English Language (1) (3h) - Confidence: 0.81",
       "RQU102 - Arabic Language (1) (2h) - Confidence: 0.81",
       "RQU 211 - General Culture (National, Regional) (2h) - Confidence: 0.80",
       "RQU 103 - Computer Skills (3h) - Confidence: 0.79",
-      "RQU 207 - English Language (2) (3h) - Confidence: 0.79",
+      "RQF104-IT - Mathematics (1) (3h) - Confidence: 0.77",
       "RQF 106- IT - Introduction to Programming (4h) - Confidence: 0.77"
     ],
     "load_analysis": {
@@ -102,21 +52,22 @@
   },
   "S2000": {
     "courses": [
-      "RQF 105- IT - Engineering Mechanics (3h) - Confidence: 0.79",
-      "RQF 212- IT - Chemistry (3h) - Confidence: 0.79",
-      "RQF 315- IT - Engineering Drawing (3h) - Confidence: 0.79",
-      "RQF104-IT - Mathematics (1) (3h) - Confidence: 0.79",
-      "RQITC316 - Discrete Mathematics (3h) - Confidence: 0.79",
-      "RQU 103 - Computer Skills (3h) - Confidence: 0.79"
+      "RQU101 - English Language (1) (3h) - Confidence: 0.81",
+      "RQU102 - Arabic Language (1) (2h) - Confidence: 0.81",
+      "RQU 211 - General Culture (National, Regional) (2h) - Confidence: 0.80",
+      "RQU 103 - Computer Skills (3h) - Confidence: 0.79",
+      "RQU 207 - English Language (2) (3h) - Confidence: 0.79",
+      "RQF104-IT - Mathematics (1) (3h) - Confidence: 0.77",
+      "Lvl 1 - Level 1 - Starter A (2h) - Confidence: 0.63"
     ],
     "load_analysis": {
       "easy": {
-        "count": 6,
-        "hours": 18
+        "count": 4,
+        "hours": 9
       },
       "medium": {
-        "count": 0,
-        "hours": 0
+        "count": 3,
+        "hours": 9
       },
       "hard": {
         "count": 0,

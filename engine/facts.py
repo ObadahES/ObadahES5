@@ -12,3 +12,25 @@ class StudentFacts(Fact):
     interests = Field(list, default=[])
     academic_status = Field(str, default=None)
     goal = Field(str, default=None) 
+
+
+class RecommendedCourse(Fact):
+    code = Field(str)
+    name = Field(str)
+    hours = Field(int)
+    category = Field(str)
+    is_failed = Field(bool, default=False)
+    base_confidence = Field(float)
+    adjusted_confidence = Field(float)
+    difficulty = Field(str)
+    difficulty_ratio = Field(float)
+
+
+class Course(Fact): pass
+class MandatoryCourse(Fact): pass
+class ElectiveCourse(Fact): pass
+class FailedCourse(Fact): pass
+class NotFailed(Fact): pass
+class PrerequisitesPassed(Fact): pass
+class HighGPA(Fact): pass
+class HighGradeInPrereqs(Fact): pass
