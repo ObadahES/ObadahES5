@@ -4,14 +4,14 @@ from .facts import *
 class RecommendationRules(KnowledgeEngine):
     def __init__(self):
         super().__init__()
-        self.recommendations = []
-        self.total_hours = 0
-        self.failed_courses_added = set()
-        self.study_load_analysis = {
-            'easy': {'count': 0, 'hours': 0},
-            'medium': {'count': 0, 'hours': 0},
-            'hard': {'count': 0, 'hours': 0}
-        }
+        # self.recommendations = []
+        # self.total_hours = 0
+        # self.failed_courses_added = set()
+        # self.study_load_analysis = {
+        #     'easy': {'count': 0, 'hours': 0},
+        #     'medium': {'count': 0, 'hours': 0},
+        #     'hard': {'count': 0, 'hours': 0}
+        # }
         self.all_courses = [] 
 
     @DefFacts()
@@ -19,7 +19,7 @@ class RecommendationRules(KnowledgeEngine):
         if hasattr(self, 'student_data'):
             passed = {c['code']: c.get('grade', 0) for c in self.student_data.get('passed_courses', [])}
             failed_codes = [c['code'] for c in self.student_data.get('failed_courses', [])]
-            gpa = self.student_data.get('gpa', 0.0)
+            # gpa = self.student_data.get('gpa', 0.0)
             self.max_hours = self.student_data.get('max_hours', 18)
 
             for code in failed_codes:

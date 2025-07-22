@@ -23,5 +23,81 @@
       }
     },
     "total_hours": 16
+  },
+  "S1001": {
+    "courses": [
+      "Lvl 1 - Level 1 - Starter A (2h) - Confidence: 0.83",
+      "RQU 211 - General Culture (National, Regional) (2h) - Confidence: 0.80",
+      "RQU 207 - English Language (2) (3h) - Confidence: 0.79",
+      "RQU 103 - Computer Skills (3h) - Confidence: 0.79",
+      "RQUE1 - Management Science (2h) - Confidence: 0.77",
+      "RQF 106- IT - Introduction to Programming (4h) - Confidence: 0.77"
+    ],
+    "load_analysis": {
+      "easy": {
+        "count": 2,
+        "hours": 4
+      },
+      "medium": {
+        "count": 4,
+        "hours": 12
+      },
+      "hard": {
+        "count": 0,
+        "hours": 0
+      }
+    },
+    "total_hours": 16
+  },
+  "S2000": {
+    "courses": [
+      "Lvl 1 - Level 1 - Starter A (2h) - Confidence: 0.83",
+      "RQU 207 - English Language (2) (3h) - Confidence: 0.79",
+      "RQU 103 - Computer Skills (3h) - Confidence: 0.79",
+      "RQUE1 - Management Science (2h) - Confidence: 0.77",
+      "RQF 106- IT - Introduction to Programming (4h) - Confidence: 0.77",
+      "RQITC319 - Cybersecurity Fundamentals (3h) - Confidence: 0.75"
+    ],
+    "load_analysis": {
+      "easy": {
+        "count": 1,
+        "hours": 2
+      },
+      "medium": {
+        "count": 4,
+        "hours": 12
+      },
+      "hard": {
+        "count": 1,
+        "hours": 3
+      }
+    },
+    "total_hours": 17
+  },
+  "S1010": {
+    "courses": [
+      "Lvl 1 - Level 1 - Starter A (2h) - Confidence: 0.83",
+      "RQU 211 - General Culture (National, Regional) (2h) - Confidence: 0.80",
+      "RQU 207 - English Language (2) (3h) - Confidence: 0.79",
+      "RQU 103 - Computer Skills (3h) - Confidence: 0.79",
+      "RQUE1 - Management Science (2h) - Confidence: 0.77",
+      "RQITC319 - Cybersecurity Fundamentals (3h) - Confidence: 0.75",
+      "RQF 209- IT - Quality and Reliability (2h) - Confidence: 0.75"
+    ],
+    "load_analysis": {
+      "easy": {
+        "count": 2,
+        "hours": 4
+      },
+      "medium": {
+        "count": 3,
+        "hours": 8
+      },
+      "hard": {
+        "count": 2,
+        "hours": 5
+      }
+    },
+    "total_hours": 17
   }
 }
