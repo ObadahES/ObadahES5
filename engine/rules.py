@@ -1,12 +1,5 @@
-from experta import KnowledgeEngine, Rule, Fact, MATCH, TEST, DefFacts,Field
-from engine.facts import StudentFacts
-import os
-import json
-from experta import Fact, Field
+from experta import KnowledgeEngine, Rule, Fact, MATCH, TEST, DefFacts
 from .facts import *
-
-
-
 
 class RecommendationRules(KnowledgeEngine):
     def __init__(self):
@@ -19,60 +12,7 @@ class RecommendationRules(KnowledgeEngine):
             'medium': {'count': 0, 'hours': 0},
             'hard': {'count': 0, 'hours': 0}
         }
-
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        courses_path = os.path.join(current_dir, '..', 'Data', 'courses.json')
-        with open(courses_path, 'r', encoding='utf-8') as f:
-            self.all_courses = json.load(f)
-
-    def declare_recommendation(self, course, confidence, is_failed=False):
-        code = course["code"]
-        if code in self.failed_courses_added or any(
-            isinstance(fact, RecommendedCourse) and fact['code'] == code
-            for fact in self.facts.values()
-        ):
-            return
-
-        name = course["name"]
-        hours = course.get("hours", 3)
-        category = "mandatory" if course.get("category") == "mandatory" or course["type"].endswith("Mandatory Requirements") else "elective"
-        difficulty_ratio = course.get("difficulty_ratio", 0.3)
-
-        if difficulty_ratio < 0.3:
-            difficulty_level = 'easy'
-        elif difficulty_ratio < 0.5:
-            difficulty_level = 'medium'
-        else:
-            difficulty_level = 'hard'
-
-        adjusted_confidence = max(0.3, confidence - (difficulty_ratio * 0.2))
-
-        if is_failed:
-            self.declare(RecommendedCourse(
-                code=code,
-                name=name,
-                hours=hours,
-                category=category,
-                is_failed=is_failed,
-                base_confidence=confidence,
-                adjusted_confidence=adjusted_confidence,
-                difficulty=difficulty_level,
-                difficulty_ratio=difficulty_ratio
-            ))
-            self.failed_courses_added.add(code)
-
-        else:
-            self.declare(RecommendedCourse(
-                code=code,
-                name=name,
-                hours=hours,
-                category=category,
-                is_failed=is_failed,
-                base_confidence=confidence,
-                adjusted_confidence=adjusted_confidence,
-                difficulty=difficulty_level,
-                difficulty_ratio=difficulty_ratio
-            ))
+        self.all_courses = [] 
 
     @DefFacts()
     def _initial_facts(self):
@@ -84,9 +24,6 @@ class RecommendationRules(KnowledgeEngine):
 
             for code in failed_codes:
                 self.declare(FailedCourse(code=code))
-                course = next((c for c in self.all_courses if c["code"] == code), None)
-                if course:
-                    self.declare_recommendation(course, 0.8, is_failed=True)
 
             yield StudentFacts(**self.student_data)
             yield Fact(failed_courses=failed_codes)
@@ -105,58 +42,86 @@ class RecommendationRules(KnowledgeEngine):
           TEST(lambda code, course: code == course["code"]),
           salience=1000)
     def handle_failed_courses(self, course):
-        self.declare_recommendation(course, 0.8, is_failed=True)
+        self.declare(RecommendationReady(code=course["code"], is_failed=True, base_confidence=0.8))
 
-    @Rule((MandatoryCourse(code=MATCH.code) | ElectiveCourse(code=MATCH.code)),
-          Course(course=MATCH.course),
-          NotFailed(code=MATCH.code),
-          PrerequisitesPassed(code=MATCH.code),
-          Fact(passed_grades=MATCH.grades),
-          salience=700)
-    def recommend_course(self, course, code, grades):
-        base_confidence = 0.7 if course.get("category") == "mandatory" or course["type"].endswith("Mandatory Requirements") else 0.5
-        prereqs = course.get("prerequisites", [])
-        if prereqs:
-            if all(pr in grades for pr in prereqs):
-                avg = sum(grades[pr] for pr in prereqs) / len(prereqs)
-                if avg >= 85:
-                    base_confidence += 0.15
-                elif avg >= 75:
-                    base_confidence += 0.10
-                elif avg >= 65:
-                    base_confidence += 0.05
-        else:
-            base_confidence += 0.15
+    @Rule(Course(course=MATCH.course),
+          TEST(lambda course: course.get("difficulty_ratio", 0.3) < 0.3))
+    def difficulty_easy(self, course):
+        self.declare(DifficultyLevel(code=course["code"], level='easy'))
 
-        if self.facts.get(HighGPA()):
-            base_confidence += 0.1
+    @Rule(Course(course=MATCH.course),
+          TEST(lambda course: 0.3 <= course.get("difficulty_ratio", 0.3) < 0.5))
+    def difficulty_medium(self, course):
+        self.declare(DifficultyLevel(code=course["code"], level='medium'))
 
-        self.declare_recommendation(course, confidence=base_confidence)
+    @Rule(Course(course=MATCH.course),
+          TEST(lambda course: course.get("difficulty_ratio", 0.3) >= 0.5))
+    def difficulty_hard(self, course):
+        self.declare(DifficultyLevel(code=course["code"], level='hard'))
+
+    @Rule(StudentFacts(gpa=MATCH.gpa),
+          TEST(lambda gpa: gpa >= 3.5))
+    def student_high_gpa(self):
+        self.declare(HighGPA())
 
     @Rule(Course(course=MATCH.course),
           Fact(failed_courses=MATCH.failed_list),
-          TEST(lambda course, failed_list: course["code"] not in failed_list),
-          salience=100)
+          TEST(lambda course, failed_list: course["code"] not in failed_list))
     def course_not_failed(self, course, failed_list):
         self.declare(NotFailed(code=course["code"]))
 
     @Rule(Course(course=MATCH.course),
           Fact(passed_courses=MATCH.passed_list),
-          TEST(lambda course, passed_list: all(pr in passed_list for pr in course.get("prerequisites", [])) if course.get("prerequisites") else True),
-          salience=100)
+          TEST(lambda course, passed_list: all(pr in passed_list for pr in course.get("prerequisites", [])) if course.get("prerequisites") else True))
     def prerequisites_passed(self, course, passed_list):
         self.declare(PrerequisitesPassed(code=course["code"]))
 
     @Rule(Course(course=MATCH.course),
           Fact(passed_grades=MATCH.grades),
-          TEST(lambda course, grades: any(grades.get(pr, 0) >= 85 for pr in course.get("prerequisites", []))),
-          salience=100)
+          TEST(lambda course, grades: any(grades.get(pr, 0) >= 85 for pr in course.get("prerequisites", []))))
     def high_grade_in_prerequisites(self, course, grades):
         self.declare(HighGradeInPrereqs(code=course["code"]))
+    @Rule(
+        (MandatoryCourse(code=MATCH.code) | ElectiveCourse(code=MATCH.code)),
+        Course(course=MATCH.course),
+        NotFailed(code=MATCH.code),
+        PrerequisitesPassed(code=MATCH.code),
+        Fact(passed_courses=MATCH.passed_list),
+        Fact(passed_grades=MATCH.grades),
+        TEST(lambda code, passed_list: code not in passed_list)  # شرط عدم ترشيح المواد التي تم اجتيازها
+    )
+    def determine_base_confidence(self, course, code, passed_list, grades):
+        base = 0.7 if course.get("category") == "mandatory" or course["type"].endswith("Mandatory Requirements") else 0.5
+        prereqs = course.get("prerequisites", [])
+        if prereqs:
+            if all(pr in grades for pr in prereqs):
+                avg = sum(grades[pr] for pr in prereqs) / len(prereqs)
+                if avg >= 85:
+                    base += 0.15
+                elif avg >= 75:
+                    base += 0.10
+                elif avg >= 65:
+                    base += 0.05
+        else:
+            base += 0.15
 
-    @Rule(StudentFacts(gpa=MATCH.gpa),
-          TEST(lambda gpa: gpa >= 3.5),
-          salience=100)
-    def student_high_gpa(self):
-        self.declare(HighGPA())
-        
+        self.declare(RecommendationReady(code=code, base_confidence=base, is_failed=False))
+
+    @Rule(RecommendationReady(code=MATCH.code, base_confidence=MATCH.base, is_failed=MATCH.is_failed),
+          Course(course=MATCH.course),
+          DifficultyLevel(code=MATCH.code, level=MATCH.level),
+          TEST(lambda course, code: course["code"] == code))
+    def finalize_recommendation(self, code, base, is_failed, course, level):
+        diff_ratio = course.get("difficulty_ratio", 0.3)
+        adjusted = max(0.3, base - (diff_ratio * 0.2))
+        self.declare(RecommendedCourse(
+            code=code,
+            name=course["name"],
+            hours=course.get("hours", 3),
+            category="mandatory" if course.get("category") == "mandatory" or course["type"].endswith("Mandatory Requirements") else "elective",
+            is_failed=is_failed,
+            base_confidence=base,
+            adjusted_confidence=adjusted,
+            difficulty=level,
+            difficulty_ratio=diff_ratio
+        ))

@@ -11,6 +11,9 @@ with open('data/students.json', 'r', encoding='utf-8') as f:
 with open('data/collage_info.json', 'r', encoding='utf-8') as f:
     COLLEGE_INFO = json.load(f)
 
+with open('data/courses.json', 'r', encoding='utf-8') as f:
+    ALL_COURSES = json.load(f)
+
 RECS_FILE = 'data/all_students_recommendations.json'
 
 HOME_HTML = """
@@ -167,7 +170,6 @@ RECS_HTML = """
 </body>
 </html>
 """
-
 @app.route('/', methods=['GET'])
 def home():
     return render_template_string(HOME_HTML, min_gpa=COLLEGE_INFO['min_gpa_for_overload'])
@@ -187,21 +189,17 @@ def recommend():
     else:
         max_allowed = min(requested_hours, COLLEGE_INFO['max_credit_hours_per_semester'])
 
+    # تحديث max_hours في بيانات الطالب
     student['max_hours'] = max_allowed
 
-    updated_students_list = list(STUDENTS.values())
-    with open('data/students.json', 'w', encoding='utf-8') as f:
-        json.dump(updated_students_list, f, ensure_ascii=False, indent=2)
+    # إضافة جميع المقررات إلى بيانات الطالب
+    student['all_courses'] = ALL_COURSES
 
     advisor = AdvisorEngine(student)
-    advisor.reset()
-    advisor.declare(StudentFacts(**student))
     advisor.run()
 
-    actual_hours = advisor.total_hours if hasattr(advisor, 'total_hours') else sum(
-        int(rec.split('(')[-1].split('h')[0]) for rec in advisor.recommendations if '(' in rec and 'h' in rec)
+    actual_hours = advisor.total_hours if hasattr(advisor, 'total_hours') else 0
 
-    # Get study load analysis data
     load_analysis = getattr(advisor, 'study_load_analysis', {
         'easy': {'count': 0, 'hours': 0},
         'medium': {'count': 0, 'hours': 0},

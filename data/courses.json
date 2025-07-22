@@ -1,7 +1,7 @@
 [
   {
     "code": "RQU101",
-    "name": "English Language (1)",
+    "name": "English Language (1)", 
     "hours": 3,
     "year": 1,
     "semester": 1,
@@ -218,5 +218,38 @@
     "prerequisites": [],
     "category": "elective",
     "difficulty_ratio": 0.4
+  },
+  {
+    "code": "RQITC317",
+    "name": "Data Structures",
+    "hours": 4,
+    "year": 2,
+    "semester": 2,
+    "type": "Certificate Mandatory Requirements",
+    "prerequisites": ["RQF 106- IT"],
+    "category": "mandatory",
+    "difficulty_ratio": 0.6
+  },
+  {
+    "code": "RQITC318",
+    "name": "Computer Networks",
+    "hours": 3,
+    "year": 3,
+    "semester": 1,
+    "type": "Certificate Mandatory Requirements",
+    "prerequisites": ["RQITC316"],
+    "category": "mandatory",
+    "difficulty_ratio": 0.55
+  },
+  {
+    "code": "RQITC319",
+    "name": "Cybersecurity Fundamentals",
+    "hours": 3,
+    "year": 3,
+    "semester": 1,
+    "type": "Certificate Elective Requirements",
+    "prerequisites": [],
+    "category": "elective",
+    "difficulty_ratio": 0.5
   }
 ]

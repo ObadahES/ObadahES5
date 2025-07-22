@@ -1,5 +1,48 @@
 [
   {
+    "id": "S1010",
+    "name": "Student 11",
+    "current_level": 2,
+    "gpa": 3.42,
+    "passed_courses": [
+      {
+        "code": "RQU101",
+        "grade": 86
+      },
+      {
+        "code": "RQU102",
+        "grade": 90
+      },
+      {
+        "code": "RQF104-IT",
+        "grade": 88
+      },
+      {
+        "code": "RQF 210- IT",
+        "grade": 84
+      },
+      {
+        "code": "RQF 212- IT",
+        "grade": 83
+      },
+      {
+        "code": "RQF 106- IT",
+        "grade": 85
+      }
+    ],
+    "failed_courses": [],
+    "remaining_hours": 62,
+    "current_semester": "Spring",
+    "max_hours": 18,
+    "registered_hours": 14,
+    "interests": [
+      "Cybersecurity",
+      "Embedded Systems"
+    ],
+    "academic_status": "good_standing",
+    "goal": "graduate_early"
+  },
+  {
     "id": "S1000",
     "name": "Student 1",
     "current_level": 2,

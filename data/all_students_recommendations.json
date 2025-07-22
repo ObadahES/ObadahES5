@@ -1,38 +1,12 @@
 {
   "S1000": {
     "courses": [
-      "RQU102 - Arabic Language (1) (2h) - Confidence: 0.81",
-      "RQU 211 - General Culture (National, Regional) (2h) - Confidence: 0.80",
+      "Lvl 1 - Level 1 - Starter A (2h) - Confidence: 0.83",
       "RQU 103 - Computer Skills (3h) - Confidence: 0.79",
+      "RQUE1 - Management Science (2h) - Confidence: 0.77",
       "Lvl 2 - Level 2 - Starter B (2h) - Confidence: 0.77",
       "RQF 106- IT - Introduction to Programming (4h) - Confidence: 0.77",
-      "RQF104-IT - Mathematics (1) (3h) - Confidence: 0.77",
-      "Lvl 1 - Level 1 - Starter A (2h) - Confidence: 0.63"
-    ],
-    "load_analysis": {
-      "easy": {
-        "count": 4,
-        "hours": 8
-      },
-      "medium": {
-        "count": 3,
-        "hours": 10
-      },
-      "hard": {
-        "count": 0,
-        "hours": 0
-      }
-    },
-    "total_hours": 18
-  },
-  "S1001": {
-    "courses": [
-      "RQU101 - English Language (1) (3h) - Confidence: 0.81",
-      "RQU102 - Arabic Language (1) (2h) - Confidence: 0.81",
-      "RQU 211 - General Culture (National, Regional) (2h) - Confidence: 0.80",
-      "RQU 103 - Computer Skills (3h) - Confidence: 0.79",
-      "RQF104-IT - Mathematics (1) (3h) - Confidence: 0.77",
-      "RQF 106- IT - Introduction to Programming (4h) - Confidence: 0.77"
+      "RQU101 - English Language (1) (3h) - Confidence: 0.76"
     ],
     "load_analysis": {
       "easy": {
@@ -41,32 +15,6 @@
       },
       "medium": {
         "count": 3,
-        "hours": 10
-      },
-      "hard": {
-        "count": 0,
-        "hours": 0
-      }
-    },
-    "total_hours": 17
-  },
-  "S2000": {
-    "courses": [
-      "RQU101 - English Language (1) (3h) - Confidence: 0.81",
-      "RQU102 - Arabic Language (1) (2h) - Confidence: 0.81",
-      "RQU 211 - General Culture (National, Regional) (2h) - Confidence: 0.80",
-      "RQU 103 - Computer Skills (3h) - Confidence: 0.79",
-      "RQU 207 - English Language (2) (3h) - Confidence: 0.79",
-      "RQF104-IT - Mathematics (1) (3h) - Confidence: 0.77",
-      "Lvl 1 - Level 1 - Starter A (2h) - Confidence: 0.63"
-    ],
-    "load_analysis": {
-      "easy": {
-        "count": 4,
-        "hours": 9
-      },
-      "medium": {
-        "count": 3,
         "hours": 9
       },
       "hard": {
@@ -74,6 +22,6 @@
         "hours": 0
       }
     },
-    "total_hours": 18
+    "total_hours": 16
   }
 }
